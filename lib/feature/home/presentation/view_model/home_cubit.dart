@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/core/network/result_api.dart';
 import 'package:shopping_app/feature/home/data/models/category_response_dto.dart';
@@ -9,6 +11,8 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._repo) : super(HomeInitialState());
   final HomeRepo _repo;
   List<CategoryResponseDTO> listOfCategories = [];
+  List<ProductResponseDTO> listOfProducts = [];
+
   Future<void> getCategories() async {
     emit(HomeLoadingState());
     final result = await _repo.getCategories();
@@ -19,17 +23,19 @@ class HomeCubit extends Cubit<HomeState> {
       case ErrorAPI<List<CategoryResponseDTO>>():
         emit(HomeErrorState(result.messageError));
     }
+  }
 
-    // Future<void> getProducts() async{
-    // emit(HomeLoadingState());
-    // final result=await _repo.getProducts();
-    // switch(result){
-    //   case SuccessAPI<List<ProductResponseDTO>>():
-    //     listOfCategories=result.data??[];
-    //     emit(HomeSuccessState());
-    //   case ErrorAPI<List<ProductResponseDTO>>():
-    //     emit(HomeErrorState(result.messageError));
-    // }
-    //}
+  Future<void> getProducts() async {
+    emit(HomeLoadingState());
+    final result = await _repo.getProducts();
+    switch (result) {
+      case SuccessAPI<List<ProductResponseDTO>>():
+        listOfProducts = result.data ?? [];
+
+        log(listOfProducts[0].slug.toString());
+        emit(HomeSuccessState());
+      case ErrorAPI<List<ProductResponseDTO>>():
+        emit(HomeErrorState(result.messageError));
+    }
   }
 }
