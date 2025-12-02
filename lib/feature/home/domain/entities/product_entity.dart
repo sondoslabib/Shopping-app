@@ -1,6 +1,6 @@
 import 'package:shopping_app/feature/home/domain/entities/category_entity.dart';
 
-class ProdustEntity {
+class ProductEntity {
   int id;
   String title;
   String slug;
@@ -9,7 +9,7 @@ class ProdustEntity {
   CategoryEntity category;
   List<String> images;
 
-  ProdustEntity({
+  ProductEntity({
     this.id = 0,
     this.title = '',
     this.slug = '',

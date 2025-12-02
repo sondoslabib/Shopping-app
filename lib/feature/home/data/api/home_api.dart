@@ -42,3 +42,5 @@ class HomeApi {
     }
   }
 }
+
+HomeApi injectableHomeApi() => HomeApi();

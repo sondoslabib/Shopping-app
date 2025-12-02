@@ -1,12 +1,11 @@
 import 'dart:developer';
-
-import 'package:shopping_app/feature/home/data/models/category_response_dto.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_app/feature/home/presentation/view/widgets/tab_item_widget.dart';
+import 'package:shopping_app/feature/home/domain/entities/category_entity.dart';
+import 'package:shopping_app/feature/home/presentation/screens/widgets/tab_item_widget.dart';
 
 class TabContainerWidget extends StatefulWidget {
   const TabContainerWidget({super.key, required this.categories});
-  final List<CategoryResponseDTO> categories;
+  final List<CategoryEntity> categories;
 
   @override
   State<TabContainerWidget> createState() => _TabContainerWidgetState();

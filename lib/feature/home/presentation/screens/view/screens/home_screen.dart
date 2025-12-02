@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/core/common/widget/product_item_widget.dart';
-import 'package:shopping_app/feature/home/data/api/home_api.dart';
-import 'package:shopping_app/feature/home/data/repo/data_source/home_data_source.dart';
-import 'package:shopping_app/feature/home/data/repo/data_source/home_data_source_imp.dart';
-import 'package:shopping_app/feature/home/data/repo/repo/home_repo.dart';
-import 'package:shopping_app/feature/home/data/repo/repo/home_repo_imp.dart';
-import 'package:shopping_app/feature/home/presentation/view/widgets/tab_container_widget.dart';
+import 'package:shopping_app/feature/home/domain/usecase/get_category_usecase.dart';
+import 'package:shopping_app/feature/home/domain/usecase/get_product_usecase.dart';
+import 'package:shopping_app/feature/home/presentation/screens/widgets/tab_container_widget.dart';
 import 'package:shopping_app/feature/home/presentation/view_model/home_cubit.dart';
 import 'package:shopping_app/feature/home/presentation/view_model/home_state.dart';
 
@@ -23,11 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    HomeApi api = HomeApi();
 
-    HomeDataSource dataSource = HomeDataSourceImp(api);
-    HomeRepo repo = HomeRepoImp(dataSource);
-    cubit = HomeCubit(repo);
+    cubit = HomeCubit(
+      injectableGetCategoriesUseCase(),
+      injectableGetProductsUseCase(),
+    );
     cubit.getCategories();
     cubit.getProducts();
   }

@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shopping_app/feature/home/data/models/product_response_dto.dart';
+import 'package:shopping_app/feature/home/domain/entities/product_entity.dart';
 
 class ProductItemWidget extends StatelessWidget {
   const ProductItemWidget({super.key, required this.product});
-  final ProductResponseDTO product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {

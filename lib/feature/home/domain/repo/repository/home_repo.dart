@@ -4,5 +4,5 @@ import 'package:shopping_app/feature/home/domain/entities/product_entity.dart';
 
 abstract class HomeRepo {
   Future<ResultAPI<List<CategoryEntity>>> getCategories();
-  Future<ResultAPI<List<ProdustEntity>>> getProducts();
+  Future<ResultAPI<List<ProductEntity>>> getProducts();
 }

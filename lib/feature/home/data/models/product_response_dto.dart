@@ -1,3 +1,6 @@
+import 'package:shopping_app/feature/home/domain/entities/category_entity.dart';
+import 'package:shopping_app/feature/home/domain/entities/product_entity.dart';
+
 class ProductResponseDTO {
   int? id;
   String? title;
@@ -34,6 +37,15 @@ class ProductResponseDTO {
     creationAt = json['creationAt'];
     updatedAt = json['updatedAt'];
   }
+  ProductEntity toEntity() => ProductEntity(
+    id: id ?? 0,
+    title: title ?? '',
+    price: price ?? 0,
+    description: description ?? '',
+    category: category!.toEntity(),
+    images: images ?? [],
+    slug: slug ?? '',
+  );
 }
 
 class Category {
@@ -61,4 +73,10 @@ class Category {
     creationAt = json['creationAt'];
     updatedAt = json['updatedAt'];
   }
+  CategoryEntity toEntity() => CategoryEntity(
+    id: id ?? 0,
+    image: image ?? '',
+    name: name ?? '',
+    slug: slug ?? '',
+  );
 }

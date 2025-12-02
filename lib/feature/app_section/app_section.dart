@@ -1,6 +1,6 @@
 import 'package:shopping_app/feature/cart/view/cart_screen.dart';
 import 'package:shopping_app/feature/favorite/view/favorite_screen.dart';
-import 'package:shopping_app/feature/home/presentation/view/screens/home_screen.dart';
+import 'package:shopping_app/feature/home/presentation/screens/view/screens/home_screen.dart';
 import 'package:shopping_app/feature/profile/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
